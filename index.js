@@ -54,7 +54,7 @@ const docker = new Docker();
     s.listen(hostPort, () => {
       console.log(
         color.green(
-          `🚀 Forwarding localhost:${hostPort} to ${target.id}:${containerPort}`
+          `🚀 Forwarding ${target.id}:${containerPort} to localhost:${hostPort}`
         )
       );
     });
