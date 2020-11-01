@@ -6,7 +6,11 @@
   "repository": "https://github.com/khayalan-mathew/docker-port-forward.git",
   "author": "Matthias Pompe <pompe.matthias@gmail.com>",
   "license": "MIT",
+  "bin": {
+    "docker-port-forward": "node index.js"
+  },
   "dependencies": {
+    "colorette": "^1.2.1",
     "dockerode": "^3.2.1"
   },
   "devDependencies": {

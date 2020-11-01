@@ -1,12 +1,9 @@
 # Docker Port Forward
 
+Simple port forwarding of ports not exposed by a container
+
 ![Build sidecar docker image](https://github.com/khayalan-mathew/docker-port-forward/workflows/Build%20sidecar%20docker%20image/badge.svg)
 ![Build example docker image](https://github.com/khayalan-mathew/docker-port-forward/workflows/Build%20example%20docker%20image/badge.svg)
-
-## What does this tool do?
-
-This tool allows you to setup a port forwarding for any port inside a docker container, even when it has not been exposed.
-`docker-port-forward 80 test-container 6060` will expose port `80` of the container on port `6060` where you run the tool.
 
 ## Installing the tool
 
@@ -17,7 +14,12 @@ Yarn:
 
 ## How do I run the tool
 
-`docker-port-forward <containerport> <containerid/name> <hostport(default:4000,optional)>`
+`docker-port-forward <containerid/name> <containerport> <hostport(default:4000,optional)>`
+
+## What does this tool do?
+
+This tool allows you to setup a port forwarding for any port inside a docker container, even when it has not been exposed.
+`docker-port-forward test-container 80 6060` will expose port `80` of the container on port `6060` where you run the tool.
 
 ## How does the tool do this?
 
