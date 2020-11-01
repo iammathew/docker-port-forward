@@ -28,4 +28,21 @@ Once you connect to the portforwarded port it will use `STDIO` using the docker 
 
 ## Why do we need this?
 
-Normally its not possible to gain access to a port on a running docker container without restarting it (but sometimes you dont want to), so this tool circumvents this. Alternative usecase is getting access to a containers port when you only have access to the docker engine api.
+Normally its not possible to gain access to a port on a running docker container without restarting it (but sometimes you dont want to), so this tool circumvents this. Alternative usecase is getting access to a containers port when you only have access to the docker engine api (this means also when the docker engine is running on another machine and you cant access any other port than the docker engine).
+
+## Test the tool
+
+First start a container which listens on a port but does not expose (in this case were using an nginx server, image can be found in the `example` folder):  
+`docker run --name pf-test ghcr.io/khayalan-mathew/docker-port-forward/example:latest`
+
+Now start the tool:  
+`docker-port-forward pf-test 80 4000`
+
+You should see the following inside your terminal:
+
+```
+🔌 Connecting to pf-test...
+🚀 Forwarding pf-test:80 to localhost:4000
+```
+
+When you visit now `localhost:4000` with your webbrowser you should see a nginx start page :)
