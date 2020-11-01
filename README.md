@@ -14,6 +14,7 @@ Yarn:
 
 ## How do I run the tool
 
+Its as easy as running this inside your terminal:  
 `docker-port-forward <containerid/name> <containerport> <hostport(default:4000,optional)>`
 
 ## What does this tool do?
