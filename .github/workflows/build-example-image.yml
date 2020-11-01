@@ -3,6 +3,8 @@ name: Build example docker image
 on:
   push:
     branches: [main]
+    paths:
+      - "./example"
 
 jobs:
   multi:

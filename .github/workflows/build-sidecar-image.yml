@@ -3,6 +3,8 @@ name: Build sidecar docker image
 on:
   push:
     branches: [main]
+    paths:
+      - "./sidecar"
 
 jobs:
   multi:
