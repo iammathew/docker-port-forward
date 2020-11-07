@@ -25,6 +25,7 @@
   },
   "files": [
     "index.js",
+    "yarn.lock",
     "package.json",
     "README.md"
   ]
