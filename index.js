@@ -17,8 +17,22 @@ const hostPort = Number(process.argv[4] || 4000);
 
 const docker = new Docker();
 
+function pull(repoTag) {
+  return new Promise((resolve, reject) => {
+    docker.pull(repoTag, function (err, stream) {
+      if (err) return reject(err);
+      docker.modem.followProgress(stream, (err, output) => {
+        if (err) return reject(err);
+        resolve(output);
+      });
+    });
+  });
+}
+
 (async () => {
   try {
+    console.log(color.yellow(`📥 Pulling sidecar image...`));
+    await pull("ghcr.io/iammathew/docker-port-forward/sidecar:latest");
     const network = await docker.createNetwork({ Name: "port-forward-net" });
     const target = docker.getContainer(containerId);
     console.log(color.yellow(`🔌 Connecting to ${target.id}...`));
@@ -26,7 +40,7 @@ const docker = new Docker();
       Container: target.id,
     });
     const container = await docker.createContainer({
-      Image: "docker-port-forward",
+      Image: "ghcr.io/iammathew/docker-port-forward/sidecar:latest",
     });
     await container.start();
     await network.connect({
