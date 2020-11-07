@@ -35,7 +35,7 @@ const docker = new Docker();
     const s = net.createServer(async (socket) => {
       try {
         const exec = await container.exec({
-          Cmd: ["socat", "STDIO", `TCP-CONNECT:${target.id}:${containerPort}}`],
+          Cmd: ["socat", "STDIO", `TCP-CONNECT:${target.id}:${containerPort}`],
           AttachStdin: true,
           AttachStdout: true,
           AttachStderr: true,
