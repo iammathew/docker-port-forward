@@ -34,7 +34,7 @@ Normally its not possible to gain access to a port on a running docker container
 ## Test the tool
 
 First start a container which listens on a port but does not expose (in this case were using an nginx server, image can be found in the `example` folder):  
-`docker run --name pf-test ghcr.io/khayalan-mathew/docker-port-forward/example:latest`
+`docker run --name pf-test ghcr.io/iammathew/docker-port-forward/example:latest`
 
 Now start the tool:  
 `docker-port-forward pf-test 80 4000`

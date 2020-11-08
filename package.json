@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Tool to forward any port inside a container to host",
   "main": "index.js",
-  "repository": "git@github.com:khayalan-mathew/docker-port-forward.git",
+  "repository": "git@github.com:iammathew/docker-port-forward.git",
   "author": "Matthias Pompe <pompe.matthias@gmail.com>",
   "license": "MIT",
   "bin": {
