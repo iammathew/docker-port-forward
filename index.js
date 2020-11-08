@@ -39,6 +39,9 @@ function pull(repoTag) {
     await network.connect({
       Container: target.id,
     });
+    const targetIp = (await target.inspect()).NetworkSettings.Networks[
+      "port-forward-net"
+    ].IPAddress;
     const container = await docker.createContainer({
       Image: "ghcr.io/iammathew/docker-port-forward/sidecar:latest",
     });
@@ -49,7 +52,7 @@ function pull(repoTag) {
     const s = net.createServer(async (socket) => {
       try {
         const exec = await container.exec({
-          Cmd: ["socat", "STDIO", `TCP-CONNECT:${target.id}:${containerPort}`],
+          Cmd: ["socat", "STDIO", `TCP-CONNECT:${targetIp}:${containerPort}`],
           AttachStdin: true,
           AttachStdout: true,
           AttachStderr: true,
