@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "example/**"
+      - ".github/workflows/build-example-image.yml"
 
 jobs:
   multi:
